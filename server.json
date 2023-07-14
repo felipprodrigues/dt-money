@@ -23,6 +23,30 @@
       "category": "Tecnologia",
       "price": 2458,
       "createdAt": "2023-07-09T14:44:38.701Z"
+    },
+    {
+      "description": "Algo novo",
+      "price": 123,
+      "category": "fwefwef",
+      "type": "income",
+      "createdAt": "2023-07-14T15:11:17.435Z",
+      "id": 4
+    },
+    {
+      "description": "pastel",
+      "price": 12,
+      "category": "alimentação",
+      "type": "outcome",
+      "createdAt": "2023-07-14T15:26:38.807Z",
+      "id": 5
+    },
+    {
+      "description": "Papel higienico",
+      "price": 23,
+      "category": "Limpeza",
+      "type": "outcome",
+      "createdAt": "2023-07-14T15:33:09.409Z",
+      "id": 6
     }
   ]
 }
