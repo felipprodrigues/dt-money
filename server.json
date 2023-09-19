@@ -2,25 +2,25 @@
   "transactions": [
     {
       "id": 1,
-      "description": "Desenvolvimento de site",
+      "description": "Web development",
       "type": "income",
-      "category": "Venda",
+      "category": "Work",
       "price": 14000,
       "createdAt": "2023-07-12T14:44:38.701Z"
     },
     {
       "id": 2,
-      "description": "Hamburger",
+      "description": "Hamburguer",
       "type": "outcome",
-      "category": "Alimentação",
+      "category": "Food",
       "price": 50,
       "createdAt": "2023-07-10T14:44:38.701Z"
     },
     {
       "id": 3,
-      "description": "Celular",
+      "description": "Mobile phone",
       "type": "outcome",
-      "category": "Tecnologia",
+      "category": "Technology",
       "price": 2458,
       "createdAt": "2023-07-09T14:44:38.701Z"
     }

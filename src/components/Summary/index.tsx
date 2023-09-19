@@ -7,11 +7,13 @@ import { useSummary } from "../../hoooks/useSummary";
 export function Summary() {
   const summary = useSummary();
 
+  if (!summary) return;
+
   return (
     <SummaryContainer>
       <SummaryCard>
         <header>
-          <span>Entradas</span>
+          <span>Entries</span>
           <ArrowCircleUp size={32} color="#00b37e" />
         </header>
 
@@ -20,7 +22,7 @@ export function Summary() {
 
       <SummaryCard>
         <header>
-          <span>Saídas</span>
+          <span>Exit</span>
           <ArrowCircleDown size={32} color="#f75a68" />
         </header>
 

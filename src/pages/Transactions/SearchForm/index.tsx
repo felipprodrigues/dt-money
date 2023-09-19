@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { MagnifyingGlass } from "phosphor-react";
 import { SearchFormContainer } from "./styles";
 import * as z from "zod";
@@ -61,7 +62,7 @@ export function SearchForm() {
 
       <button type="submit" disabled={isSubmitting}>
         <MagnifyingGlass size={24} />
-        Buscar
+        Search
       </button>
     </SearchFormContainer>
   );

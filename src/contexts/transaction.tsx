@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { ReactNode, useEffect, useState, useCallback } from "react";
 import { createContext } from "use-context-selector";
 import { api } from "../lib/axios";
@@ -40,6 +42,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     */
     async (query?: string): Promise<void> => {
       try {
+        // const response = await api.get("transactions");
         const response = await api.get("transactions", {
           params: {
             _sort: "createdAt",
