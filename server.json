@@ -1,28 +1,36 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "description": "Desenvolvimento de site",
+      "description": "House ornaments",
+      "price": 3475,
+      "category": "Home decor",
+      "type": "outcome",
+      "createdAt": "2023-09-20T18:32:45.698Z",
+      "id": 3
+    },
+    {
+      "description": "Salary",
+      "price": 15000,
+      "category": "Work",
       "type": "income",
-      "category": "Venda",
-      "price": 14000,
-      "createdAt": "2023-07-12T14:44:38.701Z"
+      "createdAt": "2023-09-20T19:08:25.966Z",
+      "id": 4
     },
     {
-      "id": 2,
-      "description": "Hamburger",
+      "description": "Car crash",
+      "price": 10000,
+      "category": "Unforseen",
       "type": "outcome",
-      "category": "Alimentação",
-      "price": 50,
-      "createdAt": "2023-07-10T14:44:38.701Z"
+      "createdAt": "2023-09-20T19:08:56.919Z",
+      "id": 5
     },
     {
-      "id": 3,
-      "description": "Celular",
+      "description": "Dog vet",
+      "price": 245,
+      "category": "Pet ",
       "type": "outcome",
-      "category": "Tecnologia",
-      "price": 2458,
-      "createdAt": "2023-07-09T14:44:38.701Z"
+      "createdAt": "2023-09-20T19:09:17.527Z",
+      "id": 6
     }
   ]
 }

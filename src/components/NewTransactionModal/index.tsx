@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import * as Dialog from "@radix-ui/react-dialog";
 import {
   CloseButton,
@@ -62,7 +64,7 @@ export function NewTransactionModal() {
       <Overlay />
 
       <Content>
-        <Dialog.Title>Nova Transação</Dialog.Title>
+        <Dialog.Title>New Transaction</Dialog.Title>
 
         <CloseButton>
           <X />
@@ -71,19 +73,19 @@ export function NewTransactionModal() {
         <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
           <input
             type="text"
-            placeholder="Descrição"
+            placeholder="Description"
             required
             {...register("description")}
           />
           <input
             type="text"
-            placeholder="Preço"
+            placeholder="Price"
             required
             {...register("price", { valueAsNumber: true })}
           />
           <input
             type="text"
-            placeholder="Categoria"
+            placeholder="Category"
             required
             {...register("category")}
           />
@@ -94,17 +96,19 @@ export function NewTransactionModal() {
             render={({ field }) => {
               return (
                 <TransactionType
-                  onValueChange={field.onChange}
+                  onValueChange={(value: "income" | "outcome") =>
+                    field.onChange(value)
+                  }
                   value={field.value}
                 >
                   <TransactionTypeButton variant="income" value="income">
                     <ArrowCircleUp size={24} />
-                    Entrada
+                    Entry
                   </TransactionTypeButton>
 
                   <TransactionTypeButton variant="outcome" value="outcome">
                     <ArrowCircleDown size={24} />
-                    Saída
+                    Exit
                   </TransactionTypeButton>
                 </TransactionType>
               );
@@ -112,7 +116,7 @@ export function NewTransactionModal() {
           />
 
           <button type="submit" disabled={isSubmitting}>
-            Cadastrar
+            Register
           </button>
         </form>
       </Content>
