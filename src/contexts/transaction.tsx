@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { ReactNode, useEffect, useState, useCallback } from "react";
@@ -24,6 +25,8 @@ interface TransactionContextType {
   transactions: TransactionProp[];
   fetchTransactions: (query: string) => Promise<void>;
   createTransaction: (data: CreateTransactionInput) => Promise<void>;
+  deleteTransaction: (data: number) => Promise<void>;
+  updateTransaction: (data: TransactionProp) => Promise<void>;
 }
 
 export const TransactionContext = createContext({} as TransactionContextType);
@@ -81,6 +84,44 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     []
   );
 
+  const deleteTransaction = async (id: number) => {
+    try {
+      const updatedTransactions = transactions.filter(
+        (transaction) => transaction.id !== id
+      );
+
+      await api.delete(`transactions/${id}`);
+
+      setTransactions(updatedTransactions);
+    } catch (e) {
+      console.log(e, "error aqui");
+    }
+  };
+
+  const updateTransaction = async (item: TransactionProp) => {
+    try {
+      const updatedTransaction = transactions.find(
+        (transaction) => transaction.id === item.id
+      );
+
+      if (updatedTransaction) {
+        const update = {
+          description: item.description,
+          price: item.price,
+          category: item.category,
+          type: item.type,
+          createdAt: item.createdAt,
+        };
+
+        await api.put(`transactions/${item.id}`, update);
+      }
+
+      console.log("it worked");
+    } catch (e) {
+      console.log(e, "erro na atualização");
+    }
+  };
+
   useEffect(() => {
     fetchTransactions();
   }, [fetchTransactions]);
@@ -91,6 +132,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         transactions: transactions,
         fetchTransactions,
         createTransaction,
+        deleteTransaction,
+        updateTransaction,
       }}
     >
       {children}
