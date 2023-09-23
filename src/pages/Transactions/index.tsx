@@ -55,7 +55,7 @@ export function Transactions() {
                         </PriceHighlight>
                       </td>
                       <td>{item.category}</td>
-                      <td>{dateFormatter.format(new Date(item.createdAt))}</td>
+                      {/* <td>{dateFormatter.format(new Date(item.createdAt))}</td> */}
                       <td>
                         <Trash
                           size={16}

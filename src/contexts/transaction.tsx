@@ -45,14 +45,9 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     */
     async (query?: string): Promise<void> => {
       try {
+        // console.log(query, " auqi a quey");
         // const response = await api.get("transactions");
-        const response = await api.get("transactions", {
-          params: {
-            _sort: "createdAt",
-            _order: "desc",
-            q: query,
-          },
-        });
+        const response = await api.get("transactions");
 
         setTransactions(response.data);
       } catch (error) {

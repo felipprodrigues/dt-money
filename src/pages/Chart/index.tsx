@@ -45,10 +45,11 @@ export function Chart() {
   transactions.map((item: TransactionProp) => {
     const weekIndex = labels.findIndex((label) => label === item.createdAt);
 
-    const formattedDate = dateFormatter.format(new Date(item.createdAt));
+    // const formattedDate = dateFormatter(item.createdAt);
+    // console.log(item.createdAt);
 
     if (weekIndex === -1) {
-      labels.push(formattedDate);
+      // labels.push(formattedDate);
       incomeTransactions.push(item.type === "income" ? item.price : 0);
       expenditure.push(item.type === "outcome" ? item.price : 0);
     } else {
