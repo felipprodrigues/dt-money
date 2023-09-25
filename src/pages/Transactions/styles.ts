@@ -5,7 +5,7 @@ export const TransactionsContainer = styled.main`
   max-width: 1120px;
   margin: 0 auto;
   padding: 0 1.5rem;
-  margin-top: 5rem;
+  margin: 5rem auto;
 `;
 
 export const TransactionsTable = styled.table`
@@ -13,6 +13,10 @@ export const TransactionsTable = styled.table`
   border-collapse: separate;
   border-spacing: 0 0.5rem;
   margin-top: 1.5rem;
+
+  div > span {
+    color: ${(props) => props.theme["gray-500"]};
+  }
 
   td {
     padding: 1.25rem 2rem;

@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
@@ -11,7 +15,7 @@ export interface TransactionProp {
   type: "income" | "outcome";
   price: number;
   category: string;
-  createdAt: string;
+  createdat: string;
 }
 
 interface CreateTransactionInput {
@@ -38,18 +42,23 @@ interface TransactionsProviderProps {
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<TransactionProp[]>([]);
 
+  useEffect(() => {
+    fetchTransactions();
+  }, [transactions]);
+
   const fetchTransactions = useCallback(
     /*
       @ useCallBack é um hook focado em performance que memoriza funções
       @ e as recria caso uma de suas dependências seja alterada.
     */
-    async (query?: string): Promise<void> => {
+    async (): Promise<void> => {
       try {
-        // console.log(query, " auqi a quey");
-        // const response = await api.get("transactions");
         const response = await api.get("transactions");
 
-        setTransactions(response.data);
+        const data = response.data;
+        const reverseData = data.reverse();
+
+        setTransactions(reverseData);
       } catch (error) {
         console.log(error);
         return;
@@ -89,7 +98,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
       setTransactions(updatedTransactions);
     } catch (e) {
-      console.log(e, "error aqui");
+      console.log(e, "error on deleting");
     }
   };
 
@@ -105,7 +114,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
           price: item.price,
           category: item.category,
           type: item.type,
-          createdAt: item.createdAt,
+          createdat: item.createdat,
         };
 
         await api.put(`transactions/${item.id}`, update);
@@ -113,13 +122,9 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
       console.log("it worked");
     } catch (e) {
-      console.log(e, "erro na atualização");
+      console.log(e, "errr on updating");
     }
   };
-
-  useEffect(() => {
-    fetchTransactions();
-  }, [fetchTransactions]);
 
   return (
     <TransactionContext.Provider

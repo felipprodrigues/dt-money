@@ -43,13 +43,12 @@ export function Chart() {
   const labels: string[] = [];
 
   transactions.map((item: TransactionProp) => {
-    const weekIndex = labels.findIndex((label) => label === item.createdAt);
+    const weekIndex = labels.findIndex((label) => label === item.createdat);
 
-    // const formattedDate = dateFormatter(item.createdAt);
-    // console.log(item.createdAt);
+    const formattedDate: string = dateFormatter(item.createdat) || "";
 
     if (weekIndex === -1) {
-      // labels.push(formattedDate);
+      labels.push(formattedDate);
       incomeTransactions.push(item.type === "income" ? item.price : 0);
       expenditure.push(item.type === "outcome" ? item.price : 0);
     } else {

@@ -3,7 +3,7 @@
 export const dateFormatter = (date: string) => {
   if (!date) return;
 
-  const getDate = date.split("T")[0];
+  const getDate = date.split("T")[0].replace("/", "-");
 
   return getDate;
 };
