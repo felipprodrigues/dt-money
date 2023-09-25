@@ -43,29 +43,35 @@ export function Transactions() {
             <SearchForm />
 
             <TransactionsTable>
-              <tbody>
-                {transactions.map((item: TransactionProp) => {
-                  return (
-                    <tr key={item.id} onClick={() => updateTransaction(item)}>
-                      <td width="50%">{item.description}</td>
-                      <td>
-                        <PriceHighlight variant={item.type}>
-                          {item.type === "outcome" && "- "}
-                          {priceFormatter.format(item.price)}
-                        </PriceHighlight>
-                      </td>
-                      <td>{item.category}</td>
-                      <td>{dateFormatter.format(new Date(item.createdAt))}</td>
-                      <td>
-                        <Trash
-                          size={16}
-                          onClick={() => deleteTransaction(item.id)}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
+              {!transactions.length ? (
+                <div>
+                  <span>This may take a while</span>
+                </div>
+              ) : (
+                <tbody>
+                  {transactions.map((item: TransactionProp) => {
+                    return (
+                      <tr key={item.id} onClick={() => updateTransaction(item)}>
+                        <td width="50%">{item.description}</td>
+                        <td>
+                          <PriceHighlight variant={item.type}>
+                            {item.type === "outcome" && "- "}
+                            {priceFormatter.format(item.price)}
+                          </PriceHighlight>
+                        </td>
+                        <td>{item.category}</td>
+                        <td>{dateFormatter(item.createdat)}</td>
+                        <td>
+                          <Trash
+                            size={16}
+                            onClick={() => deleteTransaction(item.id)}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              )}
             </TransactionsTable>
           </>
         ) : (

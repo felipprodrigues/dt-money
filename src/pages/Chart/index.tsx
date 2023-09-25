@@ -43,9 +43,9 @@ export function Chart() {
   const labels: string[] = [];
 
   transactions.map((item: TransactionProp) => {
-    const weekIndex = labels.findIndex((label) => label === item.createdAt);
+    const weekIndex = labels.findIndex((label) => label === item.createdat);
 
-    const formattedDate = dateFormatter.format(new Date(item.createdAt));
+    const formattedDate: string = dateFormatter(item.createdat) || "";
 
     if (weekIndex === -1) {
       labels.push(formattedDate);
